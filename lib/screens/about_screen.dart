@@ -29,7 +29,6 @@ class _SingleItemState extends State<SingleItem> {
     return product;
   }
 
-
   @override
   void initState() {
     init();

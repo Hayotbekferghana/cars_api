@@ -46,7 +46,6 @@ class CachedCompany {
         carModel: carModel ?? this.carModel,
         establishedYear: establishedYear ?? this.establishedYear
       );
-
   static CachedCompany fromJson(Map<String, Object?> json) =>
       CachedCompany(
         averagePrice: json[CachedCompanyFields.averagePrice] as int,
@@ -55,9 +54,7 @@ class CachedCompany {
         logo: json[CachedCompanyFields.logo] as String,
         id: json[CachedCompanyFields.id] as int,
         isFavorite: json[CachedCompanyFields.isFavorite] as int,
-
       );
-
   Map<String, Object?> toJson() =>
       {
         CachedCompanyFields.id: id,
@@ -67,5 +64,4 @@ class CachedCompany {
         CachedCompanyFields.establishedYear: establishedYear,
         CachedCompanyFields.isFavorite: isFavorite,
       };
-
 }
