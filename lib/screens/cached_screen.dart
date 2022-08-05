@@ -86,8 +86,7 @@ class _CachedScreenState extends State<CachedScreen> {
                                           child: Image.network(item[index].logo,width: 140,)),
                                       Expanded(
                                           child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
+                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                         children: [
                                           Text(item[index].carModel),
                                           Text(item[index]
