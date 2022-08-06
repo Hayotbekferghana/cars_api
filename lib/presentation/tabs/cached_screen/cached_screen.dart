@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:task_project/db/cached_company.dart';
 import 'package:task_project/db/local_db.dart';
-import 'package:task_project/model/company_item.dart';
-import 'package:task_project/screens/about_screen.dart';
+import 'package:task_project/presentation/tabs/about_screen/about_screen.dart';
+
 import 'package:task_project/service/api_provider.dart';
 
-import '../utils/utility_functions.dart';
+import '../../../utils/utility_functions.dart';
 
 class CachedScreen extends StatefulWidget {
   const CachedScreen({Key? key}) : super(key: key);

@@ -140,7 +140,7 @@ class _SingleItemState extends State<SingleItem> {
                                       style: ElevatedButton.styleFrom(
                                           primary: Colors.black,
                                           onPrimary: Colors.white,
-                                          minimumSize: const Size(150, 70),
+                                          minimumSize: const Size(150, 50),
                                           shape: RoundedRectangleBorder(
                                               borderRadius:
                                               BorderRadius.circular(30))),

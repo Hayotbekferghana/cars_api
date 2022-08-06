@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:task_project/model/company_item.dart';
-import 'package:task_project/screens/about_screen.dart';
-import 'package:task_project/screens/cached_screen.dart';
+import 'package:task_project/presentation/tabs/about_screen/about_screen.dart';
+import 'package:task_project/presentation/tabs/cached_screen/cached_screen.dart';
 import 'package:task_project/service/api_provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -21,11 +21,13 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text("Cars"),
         centerTitle: true,
         actions: [
-          IconButton(onPressed: (){
-            Navigator.push(context, MaterialPageRoute(builder: (ctx){
-              return CachedScreen();
-            }));
-          }, icon: Icon(Icons.favorite_rounded))
+          IconButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (ctx) {
+                  return const  CachedScreen();
+                }));
+              },
+              icon: const Icon(Icons.favorite_rounded,color: Colors.red,))
         ],
       ),
       body: Column(
@@ -50,9 +52,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: List.generate(
                           item.length,
                           (index) => GestureDetector(
-                            onTap: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (ctx){
-                                return SingleItem(productId: item[index].id, repository: apiProvider, isHome: true,);
+                            onTap: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (ctx) {
+                                return SingleItem(
+                                  productId: item[index].id,
+                                  repository: apiProvider,
+                                  isHome: true,
+                                );
                               }));
                             },
                             child: Container(
@@ -69,10 +76,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ]),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
                                 children: [
                                   Expanded(
-
                                       child: Image.network(item[index].logo)),
                                   Expanded(
                                       child: Column(
@@ -80,7 +87,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
                                       Text(item[index].carModel),
-                                      Text(item[index].establishedYear.toString())
+                                      Text(item[index]
+                                          .establishedYear
+                                          .toString())
                                     ],
                                   ))
                                 ],
@@ -110,6 +119,18 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.shifting,
+          selectedFontSize: 20,
+          selectedIconTheme: const IconThemeData(color: Colors.amberAccent),
+          selectedItemColor: Colors.amberAccent,
+          selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(icon: Icon(Icons.home),label: "Home"),
+            BottomNavigationBarItem(icon: Icon(Icons.favorite_border),label: "Home"),
+          ],
+        )
+
     );
   }
 }
