@@ -8,7 +8,10 @@ import 'package:task_project/utils/utility_functions.dart';
 
 class SingleItem extends StatefulWidget {
   const SingleItem(
-      {Key? key, required this.productId, required this.repository, required this.isHome})
+      {Key? key,
+      required this.productId,
+      required this.repository,
+      required this.isHome})
       : super(key: key);
   final bool isHome;
   final int productId;
@@ -19,12 +22,11 @@ class SingleItem extends StatefulWidget {
 }
 
 class _SingleItemState extends State<SingleItem> {
-
   late CompanyItem product;
 
   Future<CompanyItem> init() async {
     product =
-    await widget.repository.getSingleCompany(companyId: widget.productId);
+        await widget.repository.getSingleCompany(companyId: widget.productId);
     setState(() {});
     return product;
   }
@@ -39,11 +41,8 @@ class _SingleItemState extends State<SingleItem> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Container(
-          height: MediaQuery
-              .of(context)
-              .size
-              .height,
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height,
           child: FutureBuilder<CompanyItem>(
               future: init(),
               builder:
@@ -83,11 +82,10 @@ class _SingleItemState extends State<SingleItem> {
                           children: [
                             Center(
                                 child: Text(
-                                  product.carModel,
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 25),
-                                )),
+                              product.carModel,
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.w400, fontSize: 25),
+                            )),
                             const SizedBox(height: 10),
                             ExpansionTile(
                                 title: const Padding(
@@ -113,55 +111,61 @@ class _SingleItemState extends State<SingleItem> {
                             CarouselSlider(
                                 items: List.generate(
                                   product.carPics.length,
-                                      (index) =>
-                                      SizedBox(
-                                        child: Image.network(
-                                          product.carPics[index],
-                                        ),
-                                      ),
+                                  (index) => SizedBox(
+                                    child: Image.network(
+                                      product.carPics[index],
+                                    ),
+                                  ),
                                 ),
                                 options: CarouselOptions(
                                   enlargeCenterPage: true,
                                   scrollDirection: Axis.horizontal,
                                 )),
                             Padding(
-                              padding:
-                              const EdgeInsets.symmetric(horizontal: 30),
-                              child: (widget.isHome)? Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "\$${product.averagePrice}",
-                                    style: const TextStyle(
-                                        fontSize: 30, color: Colors.black),
-                                  ),
-                                  ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                          primary: Colors.black,
-                                          onPrimary: Colors.white,
-                                          minimumSize: const Size(150, 50),
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                              BorderRadius.circular(30))),
-                                      onPressed: () async {
-                                        await LocalDatabase.insertCachedTodo(
-                                            CachedCompany(
-                                                isFavorite: 1,
-                                                id: product.id,
-                                                averagePrice: product.averagePrice,
-                                                carModel: product.carModel,
-                                                establishedYear: product.establishedYear,
-                                                logo: product.logo));
-                                        UtilityFunctions.getMyToast(message: "Successfully added to Storage");
-                                      },
-                                      child: const Text(
-                                        "Add to Storage",
-                                        style: TextStyle(fontSize: 20),
-                                      )),
-                                ],
-                              ): SizedBox()
-                            )
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 30),
+                                child: (widget.isHome)
+                                    ? Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            "\$${product.averagePrice}",
+                                            style: const TextStyle(
+                                                fontSize: 30,
+                                                color: Colors.black),
+                                          ),
+                                          Container(
+                                            margin: const EdgeInsets.only(bottom: 10),
+                                            decoration: BoxDecoration(
+                                              color: Colors.black,
+                                              borderRadius: BorderRadius.circular(36)
+                                            ),
+                                            padding: const EdgeInsets.all(5),
+                                            child: IconButton(
+                                              highlightColor: Colors.white,
+                                              onPressed: () async {
+                                                await LocalDatabase
+                                                    .insertCachedTodo(CachedCompany(
+                                                        isFavorite: 1,
+                                                        id: product.id,
+                                                        averagePrice: product
+                                                            .averagePrice,
+                                                        carModel:
+                                                            product.carModel,
+                                                        establishedYear: product
+                                                            .establishedYear,
+                                                        logo: product.logo));
+                                                UtilityFunctions.getMyToast(
+                                                    message:
+                                                        "Successfully added to Storage");
+                                              },
+                                              icon: const Icon(Icons.favorite_border,color: Colors.redAccent,),
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    : const SizedBox())
                           ],
                         ),
                       )
