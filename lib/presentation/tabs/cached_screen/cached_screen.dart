@@ -134,24 +134,13 @@ class _CachedScreenState extends State<CachedScreen> {
                                   right: 10,
                                   child: IconButton(
                                     onPressed: () {
-                                      LocalDatabase.deleteCachedUser(
-                                        CachedCompany(
-                                          isFavorite: 1,
-                                          id: item[index].id,
-                                          averagePrice:
-                                              item[index].averagePrice,
-                                          carModel: item[index].carModel,
-                                          establishedYear:
-                                              item[index].establishedYear,
-                                          logo: item[index].logo,
-                                        ),
-                                      );
+                                      LocalDatabase.deleteCachedCompanyById(item[index].id);
                                       UtilityFunctions.getMyToast(
                                           message:
                                               "Successfully deleted ${item[index].carModel} from your favourites list");
                                       setState(() {});
                                     },
-                                    icon: const Icon(Icons.favorite,color: Colors.red,),
+                                    icon: const Icon(Icons.delete,color: Colors.red,),
                                   ),
                                 ),
                               ]),
@@ -175,6 +164,7 @@ class _CachedScreenState extends State<CachedScreen> {
                       direction: const ShimmerDirection.fromLTRB(),
                       child: GridView.count(
                         crossAxisCount: 2,
+                        childAspectRatio: 0.8,
                         children: List.generate(
                           10,
                           (index) => Container(

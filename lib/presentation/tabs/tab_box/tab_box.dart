@@ -15,7 +15,7 @@ class _TabBoxState extends State<TabBox> {
     CachedScreen(),
   ];
   int selectedIndex = 0;
-  IconData icon = Icons.home_outlined;
+  IconData icon = Icons.home;
   IconData icon1 = Icons.favorite_border;
 
   @override

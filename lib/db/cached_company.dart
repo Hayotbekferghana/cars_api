@@ -1,9 +1,4 @@
-import 'dart:ui';
-
-import 'package:task_project/model/company_item.dart';
-
 const String tableName = "cached_company";
-
 class CachedCompanyFields {
   static const String id = "id";
   static const String carModel = "car_model";
@@ -62,6 +57,6 @@ class CachedCompany {
         CachedCompanyFields.averagePrice:averagePrice,
         CachedCompanyFields.logo: logo,
         CachedCompanyFields.establishedYear: establishedYear,
-        CachedCompanyFields.isFavorite: isFavorite,
+        CachedCompanyFields.isFavorite: isFavorite
       };
 }

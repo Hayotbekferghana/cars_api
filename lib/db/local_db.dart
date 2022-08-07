@@ -57,8 +57,18 @@ class LocalDatabase {
     return result.map((json) => CachedCompany.fromJson(json)).toList();
   }
 
-  static Future<int> deleteCachedUser(CachedCompany cachedCompany) async {
+  static Future<int> deleteAllCachedCompanies(CachedCompany cachedCompany) async {
     final db = await getInstance.database;
     return db.delete(tableName);
+  }
+  static Future<int> deleteCachedCompanyById(int id) async {
+    final db = await getInstance.database;
+    var t = await db
+        .delete(tableName, where: "${CachedCompanyFields.id}=?", whereArgs: [id]);
+    if (t > 0) {
+      return t;
+    } else {
+      return -1;
+    }
   }
 }

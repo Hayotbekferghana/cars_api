@@ -132,12 +132,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         ));
                   } else {
                     return Shimmer(
-                      duration: Duration(seconds: 3), //Default value
-                      interval: Duration(seconds: 5), //Default value: Duration(seconds: 0)
+                      duration:const Duration(seconds: 3), //Default value
+                      interval: const Duration(seconds: 5), //Default value: Duration(seconds: 0)
                       color: Colors.white, //Default value
-                      // colorOpacity: 0, //Default value
                       enabled: true, //Default value
-                      direction: ShimmerDirection.fromLTRB(),
+                      direction: const ShimmerDirection.fromLTRB(),
                       child: ListView(
                           physics: const BouncingScrollPhysics(),
                           children: List.generate(
@@ -164,7 +163,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     children: [
                                       Expanded(
                                           flex: 2,
-                                          child: Container(decoration: BoxDecoration(color: Colors.grey,borderRadius: BorderRadius.circular(5)))),
+                                          child: Container(decoration: BoxDecoration(color: Colors.grey.withOpacity(0.5),borderRadius: BorderRadius.circular(5)))),
                                       Expanded(
                                         flex: 3,
                                         child: Column(
@@ -173,13 +172,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                           mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
                                           children: [
-                                            Container(width: 50,height: 10,decoration: BoxDecoration(color: Colors.grey,borderRadius: BorderRadius.circular(16))),
+                                            Container(width: 50,height: 10,decoration: BoxDecoration(color: Colors.grey.withOpacity(0.5),borderRadius: BorderRadius.circular(16))),
                                             Row(
                                               mainAxisAlignment:
                                               MainAxisAlignment.spaceEvenly,
                                               children: [
-                                                Container(width: 50,height: 10,decoration: BoxDecoration(color: Colors.grey,borderRadius: BorderRadius.circular(16))),
-                                                Container(width: 50,height: 10,decoration: BoxDecoration(color: Colors.grey,borderRadius: BorderRadius.circular(16))),
+                                                Container(width: 50,height: 10,decoration: BoxDecoration(color: Colors.grey.withOpacity(0.5),borderRadius: BorderRadius.circular(16))),
+                                                Container(width: 50,height: 10,decoration: BoxDecoration(color: Colors.grey.withOpacity(0.5),borderRadius: BorderRadius.circular(16))),
                                               ],
                                             )
                                           ],
